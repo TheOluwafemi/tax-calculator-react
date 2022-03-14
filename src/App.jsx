@@ -1,7 +1,11 @@
-import './App.css'
+import "./App.css";
+import TaxForm from "./components/TaxForm/TaxForm";
+
+const initTaxCalculation = (values) => {
+  console.log(values);
+};
 
 function App() {
-
   return (
     <div className="App">
       <header className="header">
@@ -9,11 +13,10 @@ function App() {
       </header>
 
       <section className="form-area">
-        <form action="">
-        </form>
+        <TaxForm onFormSubmit={initTaxCalculation} />
       </section>
     </div>
   );
 }
 
-export default App
+export default App;
