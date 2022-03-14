@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import TaxForm from "./components/TaxForm/TaxForm";
 import TaxDefinitions from "./utils/TaxDefinitions";
+import TaxResult from './components/TaxResult/TaxResult'
 
 function App() {
   const [taxFormValues, setTaxFormValues] = useState({});
@@ -111,6 +112,20 @@ function App() {
       <section className="form-area">
         <TaxForm onFormSubmit={initTaxCalculation} />
       </section>
+
+      {Object.keys(employerTaxAmounts).length && Object.keys(employeeTaxAmounts).length ? (
+        <section className="result-area">
+          <TaxResult
+            company={employerTaxAmounts}
+            employee={employeeTaxAmounts}
+            income={taxFormValues.income}
+          />
+        </section>
+      ) : (
+        <small className="result-area">
+          Enter the Employee's company and Gross Salary to Calculate
+        </small>
+      )}
     </div>
   );
 }
